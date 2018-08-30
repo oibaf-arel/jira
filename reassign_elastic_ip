@@ -1,0 +1,14 @@
+---
+# playbook to enable maintenance page for JIRA (used during maintenance windows)
+
+- name: enable maintenace page
+  hosts: {{ environment }}
+  vars_files:
+    - ./vars/vault.yml
+  tasks:
+    - name: associate an elastic IP with an instance and allow reassociation
+      ec2_eip:
+          device_id: "{{ instance_id[instance_environment] }}"
+          ip: "{{ elastic_ip[ip_environmet] }}"
+          region: "{{ aws_region }}"
+          allow_reassociation: yes
