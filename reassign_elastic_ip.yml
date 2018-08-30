@@ -2,7 +2,7 @@
 # playbook to enable maintenance page for JIRA (used during maintenance windows)
 
 - name: enable maintenace page
-  hosts: localhost
+  hosts: all
   vars_files:
     - ./vars/vault.yml
   tasks:
