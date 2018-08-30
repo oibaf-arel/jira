@@ -2,7 +2,7 @@
 # playbook to enable maintenance page for JIRA (used during maintenance windows)
 
 - name: enable maintenace page
-  hosts: {{ environment }}
+  hosts: localhost
   vars_files:
     - ./vars/vault.yml
   tasks:
@@ -12,3 +12,4 @@
           ip: "{{ elastic_ip[ip_environmet] }}"
           region: "{{ aws_region }}"
           allow_reassociation: yes
+      delegate_to: localhost
