@@ -7,6 +7,11 @@
   vars_files:
     - ./vars/vault.yml
   tasks:
+    - name: set ip_environment to be the same as instance_environment, if ip_environment is not set
+      set_fact:
+        ip_environment: "{{ instance_id[instance_environment] }}"
+      when: ip_environment is not defined
+
     - name: associate an elastic IP with an instance and allow reassociation
       ec2_eip:
           device_id: "{{ instance_id[instance_environment] }}"
