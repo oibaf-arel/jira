@@ -3,6 +3,7 @@
 
 - name: enable maintenace page
   hosts: all
+  gather_facts: false
   vars_files:
     - ./vars/vault.yml
   tasks:
